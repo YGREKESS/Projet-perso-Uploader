@@ -4,7 +4,8 @@
   "description": "",
   "main": "backend/index.js",
   "scripts": {
-    "start": "nodemon backend --exec babel-node backend js",
+    
+    "start": "nodemon backend --exec backend js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
