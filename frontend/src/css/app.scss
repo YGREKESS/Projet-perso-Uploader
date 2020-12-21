@@ -1,0 +1,348 @@
+@import "reset";
+@import "variable";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(80deg, #f6d365, #fda885);
+    min-height: 100vh;
+    color: $body-color;
+}
+
+a {
+    text-decoration: none;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.app-icon-loading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    svg{
+        -webkit-transform: rotate(90deg);
+                transform: rotate(90deg);
+
+        -webkit-animation: rotate 3s linear infinite;
+                animation: rotate 3s linear infinite;
+    }
+    @-webkit-keyframes rotate {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    &.send{
+        color: white;
+    }
+}
+.app-layout {
+    width: 80vw;
+    //max-width: 1200px;
+    margin: 0 auto;
+    @media(min-width: $screen-md){
+        padding: 100px 50px;
+    }
+}
+
+.app-container{
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    .app-header{
+        .app-site-info{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 470px;
+            color: #ffffff;
+            h1{
+                margin: 0;
+                padding: 0;
+                font-size: 60px;
+                font-weight: 600;
+            }
+            .site-title{
+                margin: 20px 0px;
+                padding: 0;
+                font-size: 50px;
+                font-weight: 300;
+                color: rgba(255,255,255,.9);
+            }
+            .site-slogan{
+                margin-top: 5px;
+                padding: 0;
+                font-size: 30px;
+                font-weight: 300;
+                color: rgba(255,255,255,.8);
+            }
+        }
+    }
+    .app-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 470px;
+        width: 350px;
+    }
+    @media(min-width: $screen-md){
+        .app-header{
+            float: left;
+        }
+        .app-content{
+            float: right;
+        }        
+    }
+}
+
+.app-card{
+    overflow: hidden;
+    position: relative;
+    background: #ffffff;
+    border-radius: 5px;
+    min-height: 470px;
+    max-height: 670px;
+    margin-bottom: 2rem;
+    @media(min-width: $screen-md){
+        width: 350px;
+    }
+    .app-card-header{
+        background: rgba(243, 247, 255, 1);
+        .app-card-header-inner{
+            padding: 20px;
+            max-height: 200px;
+            overflow: scroll;
+            .app-card-header-send{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .app-description{
+                    display: block;
+                    margin-top: .5rem;
+                    font-size: 12px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .app-card-content{
+        padding: 20px;
+        .progress-bar-div{
+            font-size: 11px;
+            font-weight: 300;
+            width: 100%;
+            margin-bottom: 1rem;
+            .progress-bar-description{
+                display: flex;
+                justify-content: space-between;
+            }
+            .progress-bar-span{
+                margin-top: 5px;
+                height: .5rem;
+                background: $primary-color;
+            }
+        }
+/*         .app-card-content-send-stats{
+            width: 100%;
+            height: 10rem;
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid $body-color;
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 30px;
+                width: 50%;
+                border: 1px solid $body-color;
+                span{
+                    margin-left: .5rem;
+                    font-size: 18px;
+                }
+            }
+        } */
+        .app-card-content-text{
+            width: 100%;
+            min-height: 10rem;
+            max-height: 15rem;
+            overflow: scroll;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            div{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                line-height: 1.4rem;
+                width: 100%;
+                span{
+                    margin-left: .5rem;
+                    //font-size: 18px;
+                }
+            &.div-download-message{
+                display: flex;
+                flex-direction: column;
+                padding: .5rem;
+                border: 1px solid #f6d365;
+                border-radius: 5px;
+                margin-top: .5rem;
+                text-align: left;
+                svg{
+                    align-self: flex-start;
+                    color: #f6d365;
+                    margin-bottom: .5rem;
+                }
+            }
+            &.app-card-content-file-detail-send{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                overflow-x: scroll;
+                border: 1px solid #f6d365;
+                border-radius: 5px;
+                padding: .5rem;
+                margin-bottom: .5rem;
+                text-align: left;
+                div{
+                    white-space: nowrap;
+                }
+            }
+            &.app-card-content-file-detail-send::-webkit-scrollbar {
+                display: none;
+            }
+            }
+        &.app-card-content-text::-webkit-scrollbar {
+            display: none;
+        }
+        }
+
+        .app-card-content-inner{
+            padding: 20px;
+            textarea{
+                font-family: 'Open Sans', sans-serif;
+                color: $secondary-text-color;
+            }
+        }
+    }
+}
+.app-file-select-zone{
+    width: 100%;
+    display: block;
+    text-align: center;
+    label{
+        display: block;
+        width: 100%;
+        input{
+            display: none;
+            position: fixed;
+            //top: -9999px;
+        }
+    }
+    &.error{
+        color: red;
+        .app-upload-icon{
+            border: 1px dashed red;
+        }
+    }
+    .app-file-select{
+        display: flex;
+        height: 2rem;
+        padding: 1rem;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 15px;
+        margin-bottom: 5px;
+        font-weight: 300;
+        background-color: #FFFFFF;
+        .app-file-delete{
+            cursor: pointer;
+        }
+    }
+    .app-description{
+        display: block;
+        margin-top: .5rem;
+        font-size: 12px;
+    }
+/*     .app-icon{
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 80px;
+        height: 40px;
+        border: 1px dashed $body-color;
+    } */
+}
+
+.app-form-item{
+    margin: 0 0 15px 0;
+    label{
+        text-transform: uppercase;
+        display: block;
+        font-weight: 400;
+        margin: 0 0 8px 0;
+        span{
+            text-transform: lowercase;
+        }
+    }
+    input[type='text'], textarea{
+        width: 100%;
+        border: 1px solid rgba(224, 224, 224, 1);
+        color: $secondary-text-color;
+        border-radius: 5px;
+        outline: 0 none;
+        padding: 8px;
+        &:focus, :active{
+            outline: 0 none;
+        }
+    }
+    &.error{
+        input[type='text']{
+            border: 1px solid rgb(236, 8, 8);
+        }
+        span{
+            width: 100%;
+            color: rgb(236, 8, 8);
+            font-size: 11px;
+        }
+    }
+}
+
+.app-form-actions{
+    .app-button{
+        margin-top: 1rem;
+        color: $primary-color;
+        cursor: pointer;
+        text-transform: uppercase;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: 300;
+        border: 1px solid $primary-color;
+        border-radius: 5px;
+        padding: 10px 15px;
+        &.primary{
+            color: #FFFFFF;
+            background: $primary-color;
+        }
+    }
+}
