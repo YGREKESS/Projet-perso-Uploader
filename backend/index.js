@@ -10,7 +10,7 @@ const PORT = 5001;
 
 // Connexion mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/uploader-project', {
+mongoose.connect('mongodb+srv://youssef:060594Seg@cluster0.sqcnn.mongodb.net/Upload_project?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => console.log("DB OK"));

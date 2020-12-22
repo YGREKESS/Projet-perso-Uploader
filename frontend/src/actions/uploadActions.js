@@ -39,7 +39,7 @@ const uploadFiles = (form, props) => async (dispatch) => {
             }
         })
         dispatch({ type: "UPLOAD_SUCCESS", payload: res.data });
-        //dispatch(sendEmail(res.data.post._id, res.data.post.to, res.data.post.from, res.data.post.message));
+        dispatch(sendEmail(res.data.post._id, res.data.post.to, res.data.post.from, res.data.post.message));
         setTimeout(() => props.history.push("/sent/" + res.data.post._id), 1500)
     } catch (error) {
         console.log(error)
@@ -52,7 +52,6 @@ const setBytes = (bytes) => (dispatch, getState) => {
     const {uploadStats} = getState();
     console.log(uploadStats);
     Cookie.set("uploadStats", JSON.stringify(uploadStats));
-
 }
 
 const setProgress = (progress) => (dispatch, getState) => {

@@ -37,7 +37,6 @@ const validationForm = (form) => (dispatch) => {
         }
     }
 }
-
 const resetForm = () => (dispatch) => {
     dispatch({ type: "RESET_FORM" })
 }
