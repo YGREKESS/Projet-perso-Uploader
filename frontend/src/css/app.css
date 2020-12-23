@@ -340,6 +340,15 @@ a {
   margin-top: 0.5rem;
   font-size: 12px;
 }
+.app-file-select-zone .drop-zone {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
 
 .app-form-item {
   margin: 0 0 15px 0;

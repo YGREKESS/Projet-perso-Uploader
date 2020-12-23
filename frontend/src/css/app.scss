@@ -281,6 +281,15 @@ a {
         margin-top: .5rem;
         font-size: 12px;
     }
+    .drop-zone{
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        outline: none;
+    }
 /*     .app-icon{
         display: inline-block;
         margin-top: 10px;

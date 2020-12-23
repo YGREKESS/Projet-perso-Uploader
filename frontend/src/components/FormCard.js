@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { addFileAction, deleteFileAction, setFrom, setMessage, setTo, validationForm } from '../actions/formActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadFiles } from '../actions/uploadActions';
 import { AiOutlineFileAdd, AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { useDropzone } from "react-dropzone";
 import { Link } from 'react-router-dom';
 import UploadBar from './UploadBar';
 
-export default function FormCard({props}) {
+export default function FormCard({ props }) {
+    
+    const [importFile, setImportFile] = useState(false)
+
+    const onDrop = useCallback((acceptedFiles) => {
+        dispatch(addFileAction(acceptedFiles[0]))            
+        setImportFile(false)
+    }, [])
+
+    const {getRootProps, getInputProps} = useDropzone({onDrop})
 
     const dispatch = useDispatch()
-
-    const [importFile, setImportFile] = useState(false)
 
     const myForm = useSelector(state => state.form)
     const { form } = myForm;
 
     const myValidation = useSelector(state => state.validation)
     const { error, success } = myValidation;
+
 
     useEffect(() => {
         let mounted = true;
@@ -29,14 +38,15 @@ export default function FormCard({props}) {
         return () => {
             mounted = false;
         }
-    }, [form, error, success])
+    }, [onDrop, importFile, form, error, success])
 
-    const addFile = (e) => {
+/*     const addFile = (e) => {
+        console.log(e)
         if (e.target.files[0]) {
             dispatch(addFileAction(e.target.files[0]))
         }
         setImportFile(false)
-    }
+    } */
 
     const deleteItem = (e, name) => {
         e.preventDefault();
@@ -46,7 +56,6 @@ export default function FormCard({props}) {
     const onFormSubmit = (e) => {
         e.preventDefault();
         dispatch(validationForm(form));
-  
     }
 
     const clickImport = () => {
@@ -70,13 +79,14 @@ export default function FormCard({props}) {
                                     ))
                                     : null
                                 }
-                                <label htmlFor={"input-file"}>
-                                    <input id={"input-file"} type="file" multiple={true} onClick={clickImport} onChange={addFile} />
-                                    <div>
+                                <div className={"drop-zone"} {...getRootProps({
+                                    onClick: () => clickImport(),
+                                    onDrop: () => clickImport()
+                                })} >
+                                    <input type="file" {...getInputProps()} />
                                         <span className={"app-icon" + (importFile ? "-loading upl" : "")}> {importFile ? <AiOutlineLoading3Quarters size={60}/> : <AiOutlineFileAdd size={60}/>}</span>
                                         <span className={"app-description"}>Déposer vos fichiers ici.</span>
-                                    </div>
-                                </label>
+                                </div>
                             </div>
                         </div>
                     </div>
