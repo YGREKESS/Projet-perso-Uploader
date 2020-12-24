@@ -5,7 +5,7 @@
   "main": "backend/index.js",
   "scripts": {
     "build": "cd frontend && npm install && npm run build",
-    "start": "nodemon --watch backend --exec babel-node backend/index.js",
+    "start": "babel-node backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
