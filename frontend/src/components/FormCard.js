@@ -27,7 +27,6 @@ export default function FormCard({ props }) {
     const myValidation = useSelector(state => state.validation)
     const { error, success } = myValidation;
 
-
     useEffect(() => {
         let mounted = true;
         if (mounted) {
