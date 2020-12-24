@@ -4,14 +4,14 @@
   "description": "",
   "main": "backend/index.js",
   "scripts": {
-    "start": "nodemon backend --exec babel-node backend js",
+    "build": "cd frontend && npm install && npm run build",
+    "start": "nodemon --watch backend --exec babel-node backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "archiver": "^5.1.0",
-    "babel-node": "0.0.1-security",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -26,7 +26,13 @@
     "uniqid": "^5.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0"
+  },
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
   }
 }
