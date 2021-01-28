@@ -70,8 +70,8 @@ router.post('/sendemail', async (req, res) => {
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-        user: "youssef.seghrouchni79@gmail.com", // generated ethereal user
-        pass: "060594Seg", // generated ethereal password
+        user: "", // generated ethereal user
+        pass: "", // generated ethereal password
         },
     });
 
